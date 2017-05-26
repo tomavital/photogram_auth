@@ -8,11 +8,15 @@
       <dt>Caption</dt>
       <dd><%= @photo.caption %></dd>
 
+
       <dt>Image</dt>
-      <dd><%= @photo.image %></dd>
+      <dd> <img src="<%= @photo.image %>"></dd>
 
       <dt>User</dt>
       <dd><%= @photo.user_id %></dd>
+
+      <dt>Time ago</dt>
+      <dd><%= time_ago_in_words( @photo.created_at) %></dd>
 
     </dl>
 
@@ -20,7 +24,7 @@
       <a href="/photos" class="btn btn-primary">
         Back
       </a>
-      
+
       <% if current_user.id == @photo.user_id %>
       <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
         Edit
@@ -57,7 +61,7 @@
           Body
         </label>
 
-        <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @comment.body %></textarea>
+        <textarea id="body" name="body" placeholder="Add a comment" class="form-control" rows="3"><%= @comment.body %></textarea>
       </div>
 
       <!-- Label and input for user_id -->
