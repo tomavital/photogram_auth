@@ -12,6 +12,7 @@
         <th>Caption</th>
         <th>Image</th>
         <th>User</th>
+        <th>Comment</th>
         <th>Actions</th>
       </tr>
 
@@ -19,15 +20,57 @@
       <tr>
         <td><%= photo.caption %></td>
 
-      <td>  <img src="<%= photo.image %>" width="200"></td>
+        <td>  <img src="<%= photo.image %>" width="200"></td>
         <td><%= photo.user_id %></td>
+
+
+
         <td>
-          <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
-          <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+          <form action="/create_comment" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for photo_id -->
+
+            <input name="photo_id" type="hidden" value="<%= photo.id %>">
+
+
+            <!-- Label and input for body -->
+
+
+            <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @comment.body %></textarea>
+          </div>
+
+          <!-- Label and input for user_id -->
+
+          <input name="user_id" type="hidden" value="<%= current_user.id %>">
+
+
+
+
+          <button class="btn btn-success">
+            Create Comment
+          </button>
+
+        </form>
+      </div>
+    </div>
+
+  </td>
+
+
+
+  <td>
+    <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+    <% if current_user.id == photo.user_id %>
+    <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
+    <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+  </td>
+</tr>
+
+<% end %>
+
+<% end %>
+</table>
+</div>
 </div>
