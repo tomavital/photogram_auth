@@ -69,8 +69,28 @@
       <button class="btn btn-success">
         Create Comment
       </button>
-      or
-      <a href="/comments">Cancel</a>
+
+    </form>
+  </div>
+</div>
+<!-- Validation failure messages -->
+
+
+
+
+
+    <form action="/create_like" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+<input name="user_id" type="hidden" value="<%= current_user.id %>">
+      <!-- Label and input for photo_id -->
+  <input name="photo_id" type="hidden" value="<%= @photo.id %>">
+
+      <button class="btn btn-success">
+        Like
+      </button>
+
     </form>
   </div>
 </div>
