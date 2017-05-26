@@ -13,7 +13,6 @@
 
 
 
-        <th>Actions</th>
       </tr>
 
       <% @photos.each do |photo| %>
@@ -21,7 +20,7 @@
 
 
         <td><%= photo.user.username %> <%= time_ago_in_words( photo.created_at) %>
-          <img src="<%= photo.image %>" width="1200">
+          <a href="/photos/<%= photo.id %>"><img src="<%= photo.image %>" width="1000"></a>
 
           <!-- <% if current_user !=nil %> -->
           <form action="/create_like" method="post">
@@ -68,7 +67,7 @@
       <% end %>
     </td>
 
-    <td><%= photo.user_id %></td>
+
 
 
 
@@ -77,7 +76,7 @@
 
 
     <td>
-      <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+      <!-- <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a> -->
       <% if current_user !=nil %>
       <% if current_user.id == photo.user_id %>
       <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
