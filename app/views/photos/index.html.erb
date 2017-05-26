@@ -12,7 +12,7 @@
         <th>Caption</th>
         <th>Image</th>
         <th>User</th>
-      
+
         <th>Actions</th>
       </tr>
 
@@ -21,7 +21,7 @@
         <td><%= photo.caption %></td>
 
         <td>  <img src="<%= photo.image %>" width="200">
-        </form>
+        <% if current_user !=nil %>
         <form action="/create_like" method="post">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -63,8 +63,9 @@
         Create Comment
       </button>
 
-
+<% end %>
         </td>
+
         <td><%= photo.user_id %></td>
 
 
@@ -75,6 +76,7 @@
 
   <td>
     <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+      <% if current_user !=nil %>
     <% if current_user.id == photo.user_id %>
     <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
     <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
@@ -82,7 +84,7 @@
 </tr>
 
 <% end %>
-
+<% end %>
 <% end %>
 </table>
 </div>

@@ -20,6 +20,7 @@
       <a href="/photos" class="btn btn-primary">
         Back
       </a>
+      
       <% if current_user.id == @photo.user_id %>
       <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
         Edit
