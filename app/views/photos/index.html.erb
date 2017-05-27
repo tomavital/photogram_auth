@@ -40,7 +40,7 @@
             <% else %>
             <form action="/create_like" method="post">
               <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="4E1b5WDJgqAojmA1xxh0Y07mfla+SIF03sJG74z9uTxjQgMUtM+a0Fc3o8zbubmW4EEyNPagoErp/vMj/BHY8A==">
+              <input name="authenticity_token" type="hidden">
               <input type="hidden" name="photo_id" value="<%= photo.id %>">
               <input type="hidden" name="user_id" value="<%= current_user.id %>">
               <button class="btn btn-link">
@@ -94,7 +94,7 @@
             <div class="media-body">
               <form action="/create_comment" method="post">
                 <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="woIm05DTh8lkarXNrVwQMoRW5sLT0rfDAwfNHsp5Z11BjX4iRNWfuRvTdjSx/d3HKvGqoJs6lv00O3jSupUGkQ==">
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
 
                 <input type="hidden" name="photo_id" value="<%= photo.id %>">
 
@@ -109,8 +109,8 @@
                   <div class="input-group">
                     <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
 
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">
+
+                      <button class="btn btn-success">
                         <i class="fa fa-commenting-o"></i>
                       </button>
                     </span>
