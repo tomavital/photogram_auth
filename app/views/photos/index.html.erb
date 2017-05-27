@@ -20,7 +20,7 @@
 
 
         <td><%= photo.user.username %> <%= time_ago_in_words( photo.created_at) %>
-          <a href="/photos/<%= photo.id %>"><img src="<%= photo.image %>" width="1000"></a>
+          <a href="/photos/<%= photo.id %>"><img src="<%= photo.image %>" width="1200"></a>
 
           <!-- <% if current_user !=nil %> -->
           <form action="/create_like" method="post">
